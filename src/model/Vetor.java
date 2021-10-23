@@ -2,14 +2,14 @@ package model;
 
 import java.util.Random;
 
-public class Vetor {
+public final class Vetor {
     public int tamanho;
     public int[] elementos;
 
     public Vetor(int tamanho) {
         this.setTamanho(tamanho);
         this.elementos = new int[tamanho];
-        this.Gerar();
+        this.gerar();
     }
     
     public int getTamanho() {
@@ -20,16 +20,16 @@ public class Vetor {
         this.tamanho = tamanho;
     }
     
-    private void Gerar() {
+    private void gerar() {
         Random radom = new Random();
         for (int i = 0; i < tamanho; i++) {
             this.elementos[i] += radom.nextInt(100);
         }
     }
     
-    public void GetElementos() {
+    public void getElementos() {
         for (int i = 0; i < tamanho; i++) {
-            System.out.println(elementos[i]);
+            System.out.println(this.elementos[i]);
         }
     }
     

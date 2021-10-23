@@ -8,12 +8,12 @@ public class Testa {
         Vetor vetor = new Vetor(20);
         
         System.out.println("Vetor Não Ordenado");
-        vetor.GetElementos();
+        vetor.getElementos();
         System.out.println("-----------------------");
         
         QuickSort.quickSort(vetor.elementos, 0,19);
         System.out.println("Vetor Ordenado");
-        vetor.GetElementos();
+        vetor.getElementos();
         System.out.println("-----------------------");
 
     }
