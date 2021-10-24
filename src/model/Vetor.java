@@ -3,13 +3,23 @@ package model;
 import java.util.Random;
 
 public final class Vetor {
-    public int tamanho;
+    private int tamanho;
+    private int valorMax;
     public int[] elementos;
 
-    public Vetor(int tamanho) {
+    public Vetor(int tamanho, int valorMax) {
         this.setTamanho(tamanho);
+        this.setValorMax(valorMax);
         this.elementos = new int[tamanho];
         this.gerar();
+    }
+
+    public int getValorMax() {
+        return valorMax;
+    }
+
+    public void setValorMax(int valorMax) {
+        this.valorMax = valorMax;
     }
     
     public int getTamanho() {
@@ -20,13 +30,6 @@ public final class Vetor {
         this.tamanho = tamanho;
     }
     
-    private void gerar() {
-        Random radom = new Random();
-        for (int i = 0; i < tamanho; i++) {
-            this.elementos[i] += radom.nextInt(100);
-        }
-    }
-    
     public void getElementos() {
         System.out.print('{');
         for (int i = 0; i < tamanho; i++) {
@@ -35,7 +38,12 @@ public final class Vetor {
                 System.out.print(", ");
         }
         System.out.print('}');
-
     }
     
+    private void gerar() {
+        Random radom = new Random();
+        for (int i = 0; i < tamanho; i++) {
+            this.elementos[i] += radom.nextInt(this.valorMax);
+        }
+    }
 }

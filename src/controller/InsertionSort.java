@@ -2,7 +2,7 @@ package controller;
 
 public class InsertionSort {
     
-    public static void insertionSort(int vetor[]) {  
+    public static void insertionSort(int vetor[]) {          
         int n = vetor.length;  
         for (int j = 1; j < n; j++) {  
             int key = vetor[j];  
@@ -12,7 +12,7 @@ public class InsertionSort {
                 i--;  
             }  
             vetor[i+1] = key;  
-        }  
+        }
     }
     
 }
