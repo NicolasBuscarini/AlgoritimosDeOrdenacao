@@ -28,9 +28,14 @@ public final class Vetor {
     }
     
     public void getElementos() {
+        System.out.print('{');
         for (int i = 0; i < tamanho; i++) {
-            System.out.println(this.elementos[i]);
+            System.out.print(this.elementos[i]);
+            if (i < tamanho - 1)
+                System.out.print(", ");
         }
+        System.out.print('}');
+
     }
     
 }

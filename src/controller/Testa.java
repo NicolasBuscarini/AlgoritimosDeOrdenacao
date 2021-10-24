@@ -5,17 +5,23 @@ import model.Vetor;
 public class Testa {
     
     public static void main(String[] args) {
-        Vetor vetor = new Vetor(20);
+        Vetor vetor = new Vetor(21);
+        int[] vetorInsertionSort = vetor.elementos;
+        int[] vetorQuickSort = vetor.elementos;
         
-        System.out.println("Vetor Não Ordenado");
+        System.out.println("Vetor Não Ordenado:");
         vetor.getElementos();
-        System.out.println("-----------------------");
+        System.out.println("\n--------------------------------------------------------------------------------------------");
         
-        QuickSort.quickSort(vetor.elementos, 0,19);
-        System.out.println("Vetor Ordenado");
+        System.out.println("InsertionSort:");
+        InsertionSort.insertionSort(vetorInsertionSort);
         vetor.getElementos();
-        System.out.println("-----------------------");
-
+        System.out.println("\n--------------------------------------------------------------------------------------------");
+        
+        System.out.println("QuickSort:");
+        QuickSort.quickSort(vetorQuickSort, 0, vetor.getTamanho() -1);
+        vetor.getElementos();
+        System.out.println("\n--------------------------------------------------------------------------------------------");
     }
     
 }
