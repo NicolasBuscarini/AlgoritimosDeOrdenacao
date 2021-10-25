@@ -5,7 +5,7 @@ import model.Vetor;
 public class Testa {
     
     public static void main(String[] args) {
-        Vetor vetor = new Vetor(90000, 10000);
+        Vetor vetor = new Vetor(90000, 10000); 
         
         int[] vetorInsertionSort = vetor.elementos;
         int[] vetorQuickSort = vetor.elementos;
@@ -21,7 +21,7 @@ public class Testa {
         long tempoFinalInsertionSort = System.currentTimeMillis() - tempoInicialInsertionSort;
         vetor.getElementos();
         System.out.println("\nTempo para a ordenação:"+ tempoFinalInsertionSort +"ms.");
-        System.out.println("\n--------------------------------------------------------------------------------------------\n");
+        System.out.println("--------------------------------------------------------------------------------------------\n");
         
         System.out.println("QuickSort:");
         long tempoInicialQuickSort = System.currentTimeMillis();
@@ -29,7 +29,7 @@ public class Testa {
         long tempoFinalQuickSort = System.currentTimeMillis() - tempoInicialQuickSort;
         vetor.getElementos();
         System.out.println("\nTempo para a ordenação:"+ tempoFinalQuickSort +"ms.");
-        System.out.println("\n--------------------------------------------------------------------------------------------\n");
+        System.out.println("--------------------------------------------------------------------------------------------\n");
         
         System.out.println("SelectionSort:");
         long tempoInicialSelectionSort = System.currentTimeMillis();
@@ -37,7 +37,7 @@ public class Testa {
         long tempoFinalSelectionSort = System.currentTimeMillis() - tempoInicialSelectionSort;
         vetor.getElementos();
         System.out.println("\nTempo para a ordenação:"+ tempoFinalSelectionSort +"ms.");
-        System.out.println("\n--------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------------------------------");
     }
     
 }
