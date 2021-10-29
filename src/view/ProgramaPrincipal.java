@@ -1,14 +1,20 @@
 
 package view;
 
+import controller.QuickSort;
+import model.Results;
 import model.Vetor;
+import utils.Converte;
 
 public class ProgramaPrincipal extends javax.swing.JFrame {
+    
+    private Vetor vetorInsertionSort;
+    private Vetor vetorQS;
+    private Vetor vetorSelectionSort;
 
     public ProgramaPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
-         
     }
 
     @SuppressWarnings("unchecked")
@@ -20,17 +26,19 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         lblImagemLogo = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pnlQuick = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lbQtdOrdanacoesQS = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbTempoAtualQS = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lbTempoMedioQS = new javax.swing.JLabel();
+        btnOrdenarQS = new javax.swing.JButton();
         pnlSelection = new javax.swing.JPanel();
         pnlInsertion = new javax.swing.JPanel();
         pnlButtons = new javax.swing.JPanel();
-        btnOrdenar = new javax.swing.JButton();
         btnGerarVetor = new javax.swing.JButton();
+        inputTamanhoVetor = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordenação de Dados");
@@ -39,7 +47,6 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         pnLogo.setForeground(java.awt.Color.lightGray);
 
         lblLogo.setFont(new java.awt.Font("Rockwell", 1, 40)); // NOI18N
-        lblLogo.setForeground(new java.awt.Color(0, 0, 0));
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setText("Ordenação de Dados");
 
@@ -52,20 +59,20 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnLogoLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(lblImagemLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
         pnLogoLayout.setVerticalGroup(
             pnLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnLogoLayout.createSequentialGroup()
                 .addGroup(pnLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnLogoLayout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(lblImagemLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnLogoLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(lblImagemLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36)
+                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -73,6 +80,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         jTabbedPane1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         pnlQuick.setBackground(java.awt.Color.gray);
+        pnlQuick.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlQuick.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 pnlQuickComponentAdded(evt);
@@ -80,33 +88,43 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         });
         pnlQuick.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setText("Ordenando...");
-        pnlQuick.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 110, -1));
+        lbQtdOrdanacoesQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbQtdOrdanacoesQS.setText("0");
+        pnlQuick.add(lbQtdOrdanacoesQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 50, -1));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Status:");
+        jLabel1.setText("Vezes ordenado:");
         jLabel1.setPreferredSize(new java.awt.Dimension(144, 24));
-        pnlQuick.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
+        pnlQuick.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 150, -1));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel4.setText("00:00");
-        pnlQuick.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 50, -1));
+        lbTempoAtualQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbTempoAtualQS.setText("0ms");
+        pnlQuick.add(lbTempoAtualQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 260, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel3.setText("Tempo Decorrido:");
-        pnlQuick.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
+        pnlQuick.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Tempo Médio:");
         jLabel5.setPreferredSize(new java.awt.Dimension(144, 24));
-        pnlQuick.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+        pnlQuick.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 120, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel6.setText("00:00");
-        pnlQuick.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 50, -1));
+        lbTempoMedioQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbTempoMedioQS.setText("0ms");
+        pnlQuick.add(lbTempoMedioQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 260, -1));
+
+        btnOrdenarQS.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnOrdenarQS.setText("Ordenar");
+        btnOrdenarQS.setPreferredSize(new java.awt.Dimension(107, 29));
+        btnOrdenarQS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarQSActionPerformed(evt);
+            }
+        });
+        pnlQuick.add(btnOrdenarQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 110, 30));
 
         jTabbedPane1.addTab("QuickSort", pnlQuick);
 
@@ -120,7 +138,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         );
         pnlSelectionLayout.setVerticalGroup(
             pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 264, Short.MAX_VALUE)
+            .addGap(0, 290, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("SelectionSort", pnlSelection);
@@ -135,19 +153,21 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         );
         pnlInsertionLayout.setVerticalGroup(
             pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 264, Short.MAX_VALUE)
+            .addGap(0, 290, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("InsertionSort", pnlInsertion);
 
-        btnOrdenar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnOrdenar.setText("Ordenar");
-        btnOrdenar.setPreferredSize(new java.awt.Dimension(107, 29));
-        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOrdenarActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout pnlButtonsLayout = new javax.swing.GroupLayout(pnlButtons);
+        pnlButtons.setLayout(pnlButtonsLayout);
+        pnlButtonsLayout.setHorizontalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pnlButtonsLayout.setVerticalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 83, Short.MAX_VALUE)
+        );
 
         btnGerarVetor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnGerarVetor.setText("Gerar vetor");
@@ -157,26 +177,13 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pnlButtonsLayout = new javax.swing.GroupLayout(pnlButtons);
-        pnlButtons.setLayout(pnlButtonsLayout);
-        pnlButtonsLayout.setHorizontalGroup(
-            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlButtonsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGerarVetor)
-                .addGap(18, 18, 18)
-                .addComponent(btnOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(228, 228, 228))
-        );
-        pnlButtonsLayout.setVerticalGroup(
-            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlButtonsLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addGroup(pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGerarVetor)
-                    .addComponent(btnOrdenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
-        );
+        inputTamanhoVetor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputTamanhoVetorActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Tamanho do Vetor:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,18 +192,37 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
             .addComponent(pnLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jTabbedPane1)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(btnGerarVetor)
+                        .addGap(76, 76, 76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(inputTamanhoVetor, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)))
                 .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pnLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 12, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inputTamanhoVetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGerarVetor)
+                        .addGap(6, 6, 6)))
                 .addContainerGap())
         );
 
@@ -208,13 +234,53 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlQuickComponentAdded
 
     private void btnGerarVetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarVetorActionPerformed
-        Vetor vetor = new Vetor(100, 100); 
-        
+        int tamanhoVetor = Converte.textToValue(inputTamanhoVetor.getText());
+        Vetor vetor = new Vetor(tamanhoVetor, 100); 
+        System.out.println(vetor.getTamanho());
+        this.setVetorInsertionSort(vetor);
+        this.setVetorQS(vetor);
+        this.setVetorSelectionSort(vetor);
     }//GEN-LAST:event_btnGerarVetorActionPerformed
 
-    private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
+    public Vetor getVetorInsertionSort() {
+        return vetorInsertionSort;
+    }
+
+    public void setVetorInsertionSort(Vetor vetorInsertionSort) {
+        this.vetorInsertionSort = vetorInsertionSort;
+    }
+
+    public Vetor getVetorQS() {
+        return vetorQS;
+    }
+
+    public void setVetorQS(Vetor vetorQS) {
+        this.vetorQS = vetorQS;
+    }
+
+    public Vetor getVetorSelectionSort() {
+        return vetorSelectionSort;
+    }
+
+    public void setVetorSelectionSort(Vetor vetorSelectionSort) {
+        this.vetorSelectionSort = vetorSelectionSort;
+    }
+
+    private void btnOrdenarQSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarQSActionPerformed
+        long tempoInicialQuickSort = System.currentTimeMillis();
+        QuickSort.quickSort(this.vetorQS.getElementos(), 0, vetorQS.getTamanho() -1);
+        long tempoQuickSort = System.currentTimeMillis() - tempoInicialQuickSort;
+        System.out.println(tempoQuickSort);
+        vetorQS.setTempoAtual(tempoQuickSort);
+        
+        this.lbTempoAtualQS.setText(vetorQS.getTempoAtual() + "ms");
+        this.lbTempoMedioQS.setText(vetorQS.getTempoMedio() + "ms");
+        this.lbQtdOrdanacoesQS.setText(vetorQS.getQtdOrdenacoes() + "");
+    }//GEN-LAST:event_btnOrdenarQSActionPerformed
+
+    private void inputTamanhoVetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTamanhoVetorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnOrdenarActionPerformed
+    }//GEN-LAST:event_inputTamanhoVetorActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -255,14 +321,16 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerarVetor;
-    private javax.swing.JButton btnOrdenar;
+    private javax.swing.JButton btnOrdenarQS;
+    private javax.swing.JTextField inputTamanhoVetor;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbQtdOrdanacoesQS;
+    private javax.swing.JLabel lbTempoAtualQS;
+    private javax.swing.JLabel lbTempoMedioQS;
     private javax.swing.JLabel lblImagemLogo;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JPanel pnLogo;

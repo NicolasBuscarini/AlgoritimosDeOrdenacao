@@ -2,16 +2,22 @@ package model;
 
 import java.util.Random;
 
-public final class Vetor {
+public class Vetor extends Results {
     private int tamanho;
     private int valorMax;
-    public int[] elementos;
+    private int[] elementos;
 
     public Vetor(int tamanho, int valorMax) {
         this.setTamanho(tamanho);
         this.setValorMax(valorMax);
         this.elementos = new int[tamanho];
+        
         this.gerar();
+        
+        super.setTempoAtual(0);
+        super.setTempoTotal(0);
+        super.setTempoMedio(0);
+        super.setQtdOrdenacoes(0);
     }
 
     public int getValorMax() {
@@ -29,8 +35,12 @@ public final class Vetor {
     public void setTamanho(int tamanho) {
         this.tamanho = tamanho;
     }
+
+    public int[] getElementos() {
+        return elementos;
+    }
     
-    public void getElementos() {
+    public void printElementos() {
         System.out.print('{');
         for (int i = 0; i < tamanho; i++) {
             System.out.print(this.elementos[i]);

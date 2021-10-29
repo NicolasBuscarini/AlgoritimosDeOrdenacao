@@ -3,6 +3,7 @@ package controller;
 public class QuickSort {
     
     public static int particiona(int[] elementos, int inicio, int fim) {
+        
         int esq,dir,pivo,aux; 
         esq = inicio;
         dir = fim;
