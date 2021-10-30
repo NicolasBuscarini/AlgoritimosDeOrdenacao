@@ -9,11 +9,9 @@ import utils.Converte;
 
 public class ProgramaPrincipal extends javax.swing.JFrame {
     
-    private Vetor vetor;
-
-    private Results resultsIS;
-    private Results resultsQS;
-    private Results resultsSS;
+    private Results resultsIS = new Results();
+    private Results resultsQS = new Results();
+    private Results resultsSS = new Results();
 
     public ProgramaPrincipal() {
         initComponents();
@@ -53,9 +51,9 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         btnOrdenarIS = new javax.swing.JButton();
         pnlButtons = new javax.swing.JPanel();
-        btnGerarVetor = new javax.swing.JButton();
         inputTamanhoVetor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordenação de Dados");
@@ -146,6 +144,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         jTabbedPane1.addTab("QuickSort", pnlQuick);
 
         pnlSelection.setBackground(java.awt.Color.gray);
+        pnlSelection.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel4.setText("  Tempo de ordenação atual:");
@@ -183,7 +182,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         pnlSelectionLayout.setHorizontalGroup(
             pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSelectionLayout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
+                .addContainerGap(144, Short.MAX_VALUE)
                 .addGroup(pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSelectionLayout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -207,7 +206,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         pnlSelectionLayout.setVerticalGroup(
             pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSelectionLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(73, Short.MAX_VALUE)
                 .addGroup(pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(lbTempoAtualSS))
@@ -227,6 +226,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         jTabbedPane1.addTab("SelectionSort", pnlSelection);
 
         pnlInsertion.setBackground(java.awt.Color.gray);
+        pnlInsertion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setText("  Tempo de ordenação atual:");
@@ -264,7 +264,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         pnlInsertionLayout.setHorizontalGroup(
             pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInsertionLayout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
+                .addContainerGap(144, Short.MAX_VALUE)
                 .addGroup(pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlInsertionLayout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -288,7 +288,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         pnlInsertionLayout.setVerticalGroup(
             pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInsertionLayout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(73, Short.MAX_VALUE)
                 .addGroup(pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(lbTempoAtualIS))
@@ -318,21 +318,21 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
             .addGap(0, 83, Short.MAX_VALUE)
         );
 
-        btnGerarVetor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnGerarVetor.setText("Gerar vetor");
-        btnGerarVetor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGerarVetorActionPerformed(evt);
-            }
-        });
-
         inputTamanhoVetor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputTamanhoVetorActionPerformed(evt);
             }
         });
+        inputTamanhoVetor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                inputTamanhoVetorKeyPressed(evt);
+            }
+        });
 
         jLabel7.setText("Tamanho do Vetor:");
+
+        jLabel11.setForeground(new java.awt.Color(255, 153, 0));
+        jLabel11.setText("(Cuidado!! Se digitar um tamanho muito grande, poderá demorar para ordenar o vetor.)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -343,15 +343,15 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(btnGerarVetor)
-                        .addGap(76, 76, 76))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(234, 234, 234)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(inputTamanhoVetor, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -370,8 +370,8 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
                             .addComponent(inputTamanhoVetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGerarVetor)
-                        .addGap(6, 6, 6)))
+                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(25, 25, 25)))
                 .addContainerGap())
         );
 
@@ -382,37 +382,22 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pnlQuickComponentAdded
 
-    private void  ResetResults() {
+    private void ResetResults() {
         this.resultsIS = new Results();
         this.resultsQS = new Results();
         this.resultsSS = new Results();
     }
     
-    private void btnGerarVetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarVetorActionPerformed
-        this.ResetResults();
-        
+    private int[] CriaVetor() {
         int tamanhoVetor = Converte.textToValue(inputTamanhoVetor.getText());
-        Vetor vetor = new Vetor(tamanhoVetor, 100); 
-        System.out.println("Tamanho: "+vetor.getTamanho()+" elementos");
-        this.setVetor(vetor);
-        
-        this.AtualizarLbIS();
-        this.AtualizarLbSS();
-        this.AtualizarLbQS();
-    }//GEN-LAST:event_btnGerarVetorActionPerformed
-
-    public Vetor getVetor() {
-        return vetor;
+        Vetor vetor = new Vetor(tamanhoVetor, 100);
+        return vetor.getElementos();
     }
-
-    public void setVetor(Vetor vetor) {
-        this.vetor = vetor;
-    }
-
+    
     private void btnOrdenarQSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarQSActionPerformed
-        int[] vetorQS = vetor.getElementos();
+        int[] elementos = this.CriaVetor(); 
         long tempoInicialQuickSort = System.currentTimeMillis();
-        QuickSort.quickSort(vetorQS, 0, vetorQS.length -1);
+        QuickSort.quickSort(elementos, 0, elementos.length -1);
         long tempoQuickSort = System.currentTimeMillis() - tempoInicialQuickSort;
         resultsQS.setTempoAtual(tempoQuickSort);
         
@@ -426,13 +411,13 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
     }
     
     private void inputTamanhoVetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTamanhoVetorActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_inputTamanhoVetorActionPerformed
 
     private void btnOrdenarSSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarSSActionPerformed
-        int[] vetorSS = vetor.getElementos();
+        int[] elementos = this.CriaVetor();
         long tempoInicialSS = System.currentTimeMillis();
-        SelectionSort.selectionSort(vetorSS);
+        SelectionSort.selectionSort(elementos);
         long tempoSS = System.currentTimeMillis() - tempoInicialSS;
         resultsSS.setTempoAtual(tempoSS);
         
@@ -446,14 +431,21 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
     }    
     
     private void btnOrdenarISActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarISActionPerformed
-        int[] vetorSS = vetor.getElementos();
+        int[] elementos = this.CriaVetor(); 
         long tempoInicialIS = System.currentTimeMillis();
-        InsertionSort.insertionSort(vetorSS);
+        InsertionSort.insertionSort(elementos);
         long tempoIS = System.currentTimeMillis() - tempoInicialIS;
         resultsIS.setTempoAtual(tempoIS);
         
         this.AtualizarLbIS();
     }//GEN-LAST:event_btnOrdenarISActionPerformed
+
+    private void inputTamanhoVetorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputTamanhoVetorKeyPressed
+        this.ResetResults();
+        this.AtualizarLbIS();
+        this.AtualizarLbSS();
+        this.AtualizarLbQS();
+    }//GEN-LAST:event_inputTamanhoVetorKeyPressed
 
     private void AtualizarLbIS() {
         this.lbTempoAtualIS.setText(resultsIS.getTempoAtual() + "ms");
@@ -494,13 +486,13 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
     } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGerarVetor;
     private javax.swing.JButton btnOrdenarIS;
     private javax.swing.JButton btnOrdenarQS;
     private javax.swing.JButton btnOrdenarSS;
     private javax.swing.JTextField inputTamanhoVetor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
