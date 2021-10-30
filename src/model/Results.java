@@ -1,11 +1,18 @@
 package model;
 
-public abstract class Results {
+public class Results {
     private int qtdOrdenacoes;
     private long tempoAtual;
     private long tempoTotal;
     private long tempoMedio;
 
+    public Results() {
+        this.setTempoAtual(0);
+        this.setTempoTotal(0);
+        this.setTempoMedio(0);
+        this.setQtdOrdenacoes(0);
+    }
+    
     public int getQtdOrdenacoes() {
         return qtdOrdenacoes;
     }

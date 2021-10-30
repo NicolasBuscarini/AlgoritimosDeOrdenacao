@@ -1,16 +1,19 @@
-
 package view;
 
+import controller.InsertionSort;
 import controller.QuickSort;
+import controller.SelectionSort;
 import model.Results;
 import model.Vetor;
 import utils.Converte;
 
 public class ProgramaPrincipal extends javax.swing.JFrame {
     
-    private Vetor vetorInsertionSort;
-    private Vetor vetorQS;
-    private Vetor vetorSelectionSort;
+    private Vetor vetor;
+
+    private Results resultsIS;
+    private Results resultsQS;
+    private Results resultsSS;
 
     public ProgramaPrincipal() {
         initComponents();
@@ -34,7 +37,21 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         lbTempoMedioQS = new javax.swing.JLabel();
         btnOrdenarQS = new javax.swing.JButton();
         pnlSelection = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        lbTempoAtualSS = new javax.swing.JLabel();
+        lbTempoMedioSS = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lbQtdOrdanacoesSS = new javax.swing.JLabel();
+        btnOrdenarSS = new javax.swing.JButton();
         pnlInsertion = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        lbTempoMedioIS = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lbQtdOrdanacoesIS = new javax.swing.JLabel();
+        lbTempoAtualIS = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        btnOrdenarIS = new javax.swing.JButton();
         pnlButtons = new javax.swing.JPanel();
         btnGerarVetor = new javax.swing.JButton();
         inputTamanhoVetor = new javax.swing.JTextField();
@@ -90,7 +107,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
 
         lbQtdOrdanacoesQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lbQtdOrdanacoesQS.setText("0");
-        pnlQuick.add(lbQtdOrdanacoesQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 50, -1));
+        pnlQuick.add(lbQtdOrdanacoesQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 80, -1));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -103,8 +120,8 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         pnlQuick.add(lbTempoAtualQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 260, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel3.setText("Tempo Decorrido:");
-        pnlQuick.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
+        jLabel3.setText("  Tempo de ordenação atual:");
+        pnlQuick.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 230, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -130,30 +147,162 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
 
         pnlSelection.setBackground(java.awt.Color.gray);
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setText("  Tempo de ordenação atual:");
+
+        lbTempoAtualSS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbTempoAtualSS.setText("0ms");
+
+        lbTempoMedioSS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbTempoMedioSS.setText("0ms");
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setText("Tempo Médio:");
+        jLabel6.setPreferredSize(new java.awt.Dimension(144, 24));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Vezes ordenado:");
+        jLabel2.setPreferredSize(new java.awt.Dimension(144, 24));
+
+        lbQtdOrdanacoesSS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbQtdOrdanacoesSS.setText("0");
+
+        btnOrdenarSS.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnOrdenarSS.setText("Ordenar");
+        btnOrdenarSS.setPreferredSize(new java.awt.Dimension(107, 29));
+        btnOrdenarSS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarSSActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlSelectionLayout = new javax.swing.GroupLayout(pnlSelection);
         pnlSelection.setLayout(pnlSelectionLayout);
         pnlSelectionLayout.setHorizontalGroup(
             pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSelectionLayout.createSequentialGroup()
+                .addContainerGap(148, Short.MAX_VALUE)
+                .addGroup(pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlSelectionLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(10, 10, 10)
+                        .addComponent(lbTempoAtualSS, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlSelectionLayout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(lbTempoMedioSS, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlSelectionLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(lbQtdOrdanacoesSS, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlSelectionLayout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(btnOrdenarSS, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(52, 52, 52))
         );
         pnlSelectionLayout.setVerticalGroup(
             pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSelectionLayout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addGroup(pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(lbTempoAtualSS))
+                .addGap(6, 6, 6)
+                .addGroup(pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbTempoMedioSS))
+                .addGap(6, 6, 6)
+                .addGroup(pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbQtdOrdanacoesSS))
+                .addGap(36, 36, 36)
+                .addComponent(btnOrdenarSS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
         jTabbedPane1.addTab("SelectionSort", pnlSelection);
 
         pnlInsertion.setBackground(java.awt.Color.gray);
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel8.setText("  Tempo de ordenação atual:");
+
+        lbTempoMedioIS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbTempoMedioIS.setText("0ms");
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setText("Tempo Médio:");
+        jLabel9.setPreferredSize(new java.awt.Dimension(144, 24));
+
+        lbQtdOrdanacoesIS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbQtdOrdanacoesIS.setText("0");
+
+        lbTempoAtualIS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbTempoAtualIS.setText("0ms");
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Vezes ordenado:");
+        jLabel10.setPreferredSize(new java.awt.Dimension(144, 24));
+
+        btnOrdenarIS.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnOrdenarIS.setText("Ordenar");
+        btnOrdenarIS.setPreferredSize(new java.awt.Dimension(107, 29));
+        btnOrdenarIS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarISActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlInsertionLayout = new javax.swing.GroupLayout(pnlInsertion);
         pnlInsertion.setLayout(pnlInsertionLayout);
         pnlInsertionLayout.setHorizontalGroup(
             pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInsertionLayout.createSequentialGroup()
+                .addContainerGap(148, Short.MAX_VALUE)
+                .addGroup(pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlInsertionLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(10, 10, 10)
+                        .addComponent(lbTempoAtualIS, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlInsertionLayout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(lbTempoMedioIS, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlInsertionLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(lbQtdOrdanacoesIS, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlInsertionLayout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(btnOrdenarIS, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(52, 52, 52))
         );
         pnlInsertionLayout.setVerticalGroup(
             pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInsertionLayout.createSequentialGroup()
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addGroup(pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(lbTempoAtualIS))
+                .addGap(6, 6, 6)
+                .addGroup(pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbTempoMedioIS))
+                .addGap(6, 6, 6)
+                .addGroup(pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbQtdOrdanacoesIS))
+                .addGap(36, 36, 36)
+                .addComponent(btnOrdenarIS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
         jTabbedPane1.addTab("InsertionSort", pnlInsertion);
@@ -233,55 +382,86 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pnlQuickComponentAdded
 
+    private void  ResetResults() {
+        this.resultsIS = new Results();
+        this.resultsQS = new Results();
+        this.resultsSS = new Results();
+    }
+    
     private void btnGerarVetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarVetorActionPerformed
+        this.ResetResults();
+        
         int tamanhoVetor = Converte.textToValue(inputTamanhoVetor.getText());
         Vetor vetor = new Vetor(tamanhoVetor, 100); 
-        System.out.println(vetor.getTamanho());
-        this.setVetorInsertionSort(vetor);
-        this.setVetorQS(vetor);
-        this.setVetorSelectionSort(vetor);
+        System.out.println("Tamanho: "+vetor.getTamanho()+" elementos");
+        this.setVetor(vetor);
+        
+        this.AtualizarLbIS();
+        this.AtualizarLbSS();
+        this.AtualizarLbQS();
     }//GEN-LAST:event_btnGerarVetorActionPerformed
 
-    public Vetor getVetorInsertionSort() {
-        return vetorInsertionSort;
+    public Vetor getVetor() {
+        return vetor;
     }
 
-    public void setVetorInsertionSort(Vetor vetorInsertionSort) {
-        this.vetorInsertionSort = vetorInsertionSort;
-    }
-
-    public Vetor getVetorQS() {
-        return vetorQS;
-    }
-
-    public void setVetorQS(Vetor vetorQS) {
-        this.vetorQS = vetorQS;
-    }
-
-    public Vetor getVetorSelectionSort() {
-        return vetorSelectionSort;
-    }
-
-    public void setVetorSelectionSort(Vetor vetorSelectionSort) {
-        this.vetorSelectionSort = vetorSelectionSort;
+    public void setVetor(Vetor vetor) {
+        this.vetor = vetor;
     }
 
     private void btnOrdenarQSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarQSActionPerformed
+        int[] vetorQS = vetor.getElementos();
         long tempoInicialQuickSort = System.currentTimeMillis();
-        QuickSort.quickSort(this.vetorQS.getElementos(), 0, vetorQS.getTamanho() -1);
+        QuickSort.quickSort(vetorQS, 0, vetorQS.length -1);
         long tempoQuickSort = System.currentTimeMillis() - tempoInicialQuickSort;
-        System.out.println(tempoQuickSort);
-        vetorQS.setTempoAtual(tempoQuickSort);
+        this.vetor.printElementos();
+        resultsQS.setTempoAtual(tempoQuickSort);
         
-        this.lbTempoAtualQS.setText(vetorQS.getTempoAtual() + "ms");
-        this.lbTempoMedioQS.setText(vetorQS.getTempoMedio() + "ms");
-        this.lbQtdOrdanacoesQS.setText(vetorQS.getQtdOrdenacoes() + "");
+        this.AtualizarLbQS();
     }//GEN-LAST:event_btnOrdenarQSActionPerformed
 
+    private void AtualizarLbQS() {
+        this.lbTempoAtualQS.setText(resultsQS.getTempoAtual() + "ms");
+        this.lbTempoMedioQS.setText(resultsQS.getTempoMedio() + "ms");
+        this.lbQtdOrdanacoesQS.setText(resultsQS.getQtdOrdenacoes() + "");
+    }
+    
     private void inputTamanhoVetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTamanhoVetorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputTamanhoVetorActionPerformed
 
+    private void btnOrdenarSSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarSSActionPerformed
+        int[] vetorSS = vetor.getElementos();
+        long tempoInicialSS = System.currentTimeMillis();
+        SelectionSort.selectionSort(vetorSS);
+        long tempoSS = System.currentTimeMillis() - tempoInicialSS;
+        resultsSS.setTempoAtual(tempoSS);
+        
+        this.AtualizarLbSS();
+    }//GEN-LAST:event_btnOrdenarSSActionPerformed
+
+    private void AtualizarLbSS() {
+        this.lbTempoAtualSS.setText(resultsSS.getTempoAtual() + "ms");
+        this.lbTempoMedioSS.setText(resultsSS.getTempoMedio() + "ms");
+        this.lbQtdOrdanacoesSS.setText(resultsSS.getQtdOrdenacoes() + "");
+    }    
+    
+    private void btnOrdenarISActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarISActionPerformed
+        int[] vetorSS = vetor.getElementos();
+        long tempoInicialIS = System.currentTimeMillis();
+        InsertionSort.insertionSort(vetorSS);
+        long tempoIS = System.currentTimeMillis() - tempoInicialIS;
+        resultsIS.setTempoAtual(tempoIS);
+        
+        this.AtualizarLbIS();
+    }//GEN-LAST:event_btnOrdenarISActionPerformed
+
+    private void AtualizarLbIS() {
+        this.lbTempoAtualIS.setText(resultsIS.getTempoAtual() + "ms");
+        this.lbTempoMedioIS.setText(resultsIS.getTempoMedio() + "ms");
+        this.lbQtdOrdanacoesIS.setText(resultsIS.getQtdOrdenacoes() + "");
+    } 
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -312,25 +492,34 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
                 new ProgramaPrincipal().setVisible(true);
             }
         });
-    }
-
-   
-    
-    
-    
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerarVetor;
+    private javax.swing.JButton btnOrdenarIS;
     private javax.swing.JButton btnOrdenarQS;
+    private javax.swing.JButton btnOrdenarSS;
     private javax.swing.JTextField inputTamanhoVetor;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbQtdOrdanacoesIS;
     private javax.swing.JLabel lbQtdOrdanacoesQS;
+    private javax.swing.JLabel lbQtdOrdanacoesSS;
+    private javax.swing.JLabel lbTempoAtualIS;
     private javax.swing.JLabel lbTempoAtualQS;
+    private javax.swing.JLabel lbTempoAtualSS;
+    private javax.swing.JLabel lbTempoMedioIS;
     private javax.swing.JLabel lbTempoMedioQS;
+    private javax.swing.JLabel lbTempoMedioSS;
     private javax.swing.JLabel lblImagemLogo;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JPanel pnLogo;
