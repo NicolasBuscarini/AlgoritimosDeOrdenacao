@@ -414,7 +414,6 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         long tempoInicialQuickSort = System.currentTimeMillis();
         QuickSort.quickSort(vetorQS, 0, vetorQS.length -1);
         long tempoQuickSort = System.currentTimeMillis() - tempoInicialQuickSort;
-        this.vetor.printElementos();
         resultsQS.setTempoAtual(tempoQuickSort);
         
         this.AtualizarLbQS();
