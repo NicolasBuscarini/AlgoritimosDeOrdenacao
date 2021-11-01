@@ -1,12 +1,12 @@
 package controller;
 
 import utils.Configura;
-import view.ProgramaPrincipal;
+import view.TelaOrdenacao;
 
 public class Main {
     public static void main(String[] args) {
         
         Configura.LookAndFeel("Windows Classic");
-        new ProgramaPrincipal().setVisible(true);
+        new TelaOrdenacao().setVisible(true);
     }
 }

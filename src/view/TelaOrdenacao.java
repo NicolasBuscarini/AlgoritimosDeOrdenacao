@@ -7,17 +7,15 @@ import model.Results;
 import model.Vetor;
 import utils.Converte;
 
-public class ProgramaPrincipal extends javax.swing.JFrame {
+public class TelaOrdenacao extends javax.swing.JFrame {
     
-    private Results resultsIS = new Results();
-    private Results resultsQS = new Results();
-    private Results resultsSS = new Results();
+    private Results resultsIS, resultsQS, resultsSS;
 
-    public ProgramaPrincipal() {
+    public TelaOrdenacao() {
         initComponents();
         setLocationRelativeTo(null);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -105,31 +103,31 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
 
         lbQtdOrdanacoesQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lbQtdOrdanacoesQS.setText("0");
-        pnlQuick.add(lbQtdOrdanacoesQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 80, -1));
+        pnlQuick.add(lbQtdOrdanacoesQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 80, -1));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Vezes ordenado:");
         jLabel1.setPreferredSize(new java.awt.Dimension(144, 24));
-        pnlQuick.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 150, -1));
+        pnlQuick.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 150, -1));
 
         lbTempoAtualQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lbTempoAtualQS.setText("0ms");
-        pnlQuick.add(lbTempoAtualQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 260, -1));
+        pnlQuick.add(lbTempoAtualQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 260, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel3.setText("  Tempo de ordenação atual:");
-        pnlQuick.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 230, -1));
+        pnlQuick.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 230, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Tempo Médio:");
         jLabel5.setPreferredSize(new java.awt.Dimension(144, 24));
-        pnlQuick.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 120, -1));
+        pnlQuick.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 120, -1));
 
         lbTempoMedioQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         lbTempoMedioQS.setText("0ms");
-        pnlQuick.add(lbTempoMedioQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 260, -1));
+        pnlQuick.add(lbTempoMedioQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 260, -1));
 
         btnOrdenarQS.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnOrdenarQS.setText("Ordenar");
@@ -139,7 +137,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
                 btnOrdenarQSActionPerformed(evt);
             }
         });
-        pnlQuick.add(btnOrdenarQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 110, 30));
+        pnlQuick.add(btnOrdenarQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 110, 30));
 
         jTabbedPane1.addTab("QuickSort", pnlQuick);
 
@@ -182,7 +180,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         pnlSelectionLayout.setHorizontalGroup(
             pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSelectionLayout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlSelectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSelectionLayout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -264,7 +262,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         pnlInsertionLayout.setHorizontalGroup(
             pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlInsertionLayout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
+                .addContainerGap(138, Short.MAX_VALUE)
                 .addGroup(pnlInsertionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlInsertionLayout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -315,7 +313,7 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         );
         pnlButtonsLayout.setVerticalGroup(
             pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 83, Short.MAX_VALUE)
+            .addGap(0, 77, Short.MAX_VALUE)
         );
 
         inputTamanhoVetor.addActionListener(new java.awt.event.ActionListener() {
@@ -339,20 +337,22 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputTamanhoVetor, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(234, 234, 234)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(inputTamanhoVetor, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -361,11 +361,11 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
                 .addComponent(pnLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 12, Short.MAX_VALUE)
+                        .addGap(0, 6, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(inputTamanhoVetor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
@@ -379,7 +379,6 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void pnlQuickComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_pnlQuickComponentAdded
-        // TODO add your handling code here:
     }//GEN-LAST:event_pnlQuickComponentAdded
 
     private void ResetResults() {
@@ -396,11 +395,12 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
     
     private void btnOrdenarQSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarQSActionPerformed
         int[] elementos = this.CriaVetor(); 
+
         long tempoInicialQuickSort = System.currentTimeMillis();
         QuickSort.quickSort(elementos, 0, elementos.length -1);
         long tempoQuickSort = System.currentTimeMillis() - tempoInicialQuickSort;
+
         resultsQS.setTempoAtual(tempoQuickSort);
-        
         this.AtualizarLbQS();
     }//GEN-LAST:event_btnOrdenarQSActionPerformed
 
@@ -411,16 +411,16 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
     }
     
     private void inputTamanhoVetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTamanhoVetorActionPerformed
-        
     }//GEN-LAST:event_inputTamanhoVetorActionPerformed
 
     private void btnOrdenarSSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarSSActionPerformed
         int[] elementos = this.CriaVetor();
+        
         long tempoInicialSS = System.currentTimeMillis();
         SelectionSort.selectionSort(elementos);
         long tempoSS = System.currentTimeMillis() - tempoInicialSS;
-        resultsSS.setTempoAtual(tempoSS);
         
+        resultsSS.setTempoAtual(tempoSS);        
         this.AtualizarLbSS();
     }//GEN-LAST:event_btnOrdenarSSActionPerformed
 
@@ -432,11 +432,12 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
     
     private void btnOrdenarISActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarISActionPerformed
         int[] elementos = this.CriaVetor(); 
+        
         long tempoInicialIS = System.currentTimeMillis();
         InsertionSort.insertionSort(elementos);
         long tempoIS = System.currentTimeMillis() - tempoInicialIS;
-        resultsIS.setTempoAtual(tempoIS);
         
+        resultsIS.setTempoAtual(tempoIS);        
         this.AtualizarLbIS();
     }//GEN-LAST:event_btnOrdenarISActionPerformed
 
@@ -467,20 +468,21 @@ public class ProgramaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ProgramaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaOrdenacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ProgramaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaOrdenacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ProgramaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaOrdenacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ProgramaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaOrdenacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ProgramaPrincipal().setVisible(true);
+                new TelaOrdenacao().setVisible(true);
             }
         });
     } 
