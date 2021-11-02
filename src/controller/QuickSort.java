@@ -2,39 +2,32 @@ package controller;
 
 public class QuickSort {
     
-    public static int particiona(int[] elementos, int inicio, int fim) {
-        
-        int esq,dir,pivo,aux; 
-        esq = inicio;
-        dir = fim;
-        pivo = elementos[inicio];        
-        
-        while(esq < dir) {
-            while(esq <= fim && elementos[esq] <= pivo)
-                esq++;
-            
-            while(dir >= 0 && elementos[dir] > pivo)
-                dir--;
-            
-            if(esq < dir){
-                aux = elementos[esq];
-                elementos[esq]= elementos[dir];
-                elementos[dir] = aux;
-            }     
-        } 
-        
-        elementos[inicio] = elementos[dir];
-        elementos[dir] = pivo;
-        return dir;
-    }
-    
-    public static void quickSort(int[] elementos, int inicio, int fim) {
-        int pivo;
-        if (fim > inicio){
-            pivo = particiona(elementos,inicio,fim);
-            quickSort(elementos, inicio, pivo-1);
-            quickSort(elementos, pivo+1, fim);
+    public static void quickSort(int[] v, int esquerda, int direita) {
+        int esq = esquerda;
+        int dir = direita;
+        int pivo = v[(esq + dir) / 2];
+        int troca;
+
+        while (esq <= dir) {
+            while (v[esq] < pivo) {
+                esq = esq + 1;
+            }
+            while (v[dir] > pivo) {
+                dir = dir - 1;
+            }
+            if (esq <= dir) {
+                troca = v[esq];
+                v[esq] = v[dir];
+                v[dir] = troca;
+                esq = esq + 1;
+                dir = dir - 1;
+            }
         }
+        if (dir > esquerda)
+                quickSort(v, esquerda, dir);
+
+        if (esq < direita)
+                quickSort(v, esq, direita);
     }
     
 }
