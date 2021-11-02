@@ -14,5 +14,4 @@ public class InsertionSort {
             vetor[i+1] = key;  
         }
     }
-    
 }

@@ -11,6 +11,5 @@ public class LimitajTextField extends PlainDocument {
         int ilen = (getLength() + str.length());
         if (ilen <= 7) 
             super.insertString(offs, str.replaceAll("[^0-9]", ""), a); 
-            
     }
 }

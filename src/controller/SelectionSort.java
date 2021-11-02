@@ -17,5 +17,4 @@ public class SelectionSort {
             arr[i] = smallerNumber;  
         }
     }
-    
 }
