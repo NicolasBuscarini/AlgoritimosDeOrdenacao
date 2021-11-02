@@ -6,7 +6,7 @@ import controller.SelectionSort;
 import javax.swing.JOptionPane;
 import model.Results;
 import model.Vetor;
-import utils.ApenasNumeros;
+import utils.LimitajTextField;
 import utils.Converte;
 
 public class TelaOrdenacao extends javax.swing.JFrame {
@@ -16,7 +16,7 @@ public class TelaOrdenacao extends javax.swing.JFrame {
     public TelaOrdenacao() {
         initComponents();
         setLocationRelativeTo(null);
-        inputTamanhoVetor.setDocument(new ApenasNumeros());
+        inputTamanhoVetor.setDocument(new LimitajTextField());  // Limita apenas numeros e limite de 7 caracteres.
     }
     
     @SuppressWarnings("unchecked")
@@ -396,15 +396,13 @@ public class TelaOrdenacao extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaOrdenacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaOrdenacao().setVisible(true);
             }
         });
-    } 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrdenarIS;
