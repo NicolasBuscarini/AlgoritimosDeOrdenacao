@@ -2,16 +2,18 @@ package controller;
 
 public class InsertionSort {
     
-    public static void insertionSort(int vetor[]) {          
-        int n = vetor.length;  
-        for (int j = 1; j < n; j++) {  
+    public static void insertionSort(int[] vetor) {          
+        int tamanho = vetor.length; 
+        
+        for (int j = 1; j < tamanho; j++) {
             int key = vetor[j];  
-            int i = j-1;  
-            while ( (i > -1) && ( vetor [i] > key ) ) {  
-                vetor [i+1] = vetor [i];  
+            int i = j-1; 
+            
+            while ( (i > -1) && (vetor[i] > key) ) {  
+                vetor[i+1] = vetor[i];  
                 i--;  
-            }  
-            vetor[i+1] = key;  
+            } 
+            vetor[i+1] = key;
         }
     }
 }
