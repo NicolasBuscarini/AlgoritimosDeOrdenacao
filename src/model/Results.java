@@ -1,6 +1,7 @@
 package model;
 
 public class Results {
+    
     private int qtdOrdenacoes;
     private long tempoAtual;
     private long tempoTotal;
@@ -45,7 +46,7 @@ public class Results {
         this.tempoAtual = tempoAtual;
         this.tempoTotal += this.tempoAtual;
         this.qtdOrdenacoes += 1;
-        this.tempoMedio = (this.tempoTotal)/qtdOrdenacoes;
+        this.tempoMedio = this.tempoTotal / qtdOrdenacoes;
     }
     
 }

@@ -6,7 +6,7 @@ import controller.SelectionSort;
 import javax.swing.JOptionPane;
 import model.Results;
 import model.Vetor;
-import utils.LimitajTextField;
+import utils.LimitaJTextField;
 import utils.Converte;
 
 public class TelaOrdenacao extends javax.swing.JFrame {
@@ -16,7 +16,9 @@ public class TelaOrdenacao extends javax.swing.JFrame {
     public TelaOrdenacao() {
         initComponents();
         setLocationRelativeTo(null);
-        inputTamanhoVetor.setDocument(new LimitajTextField());  // Limita apenas numeros e limite de 7 caracteres.
+        inputTamanhoVetor.setDocument(new LimitaJTextField());  // Limita apenas numeros e limite de 7 caracteres.
+        this.ResetResults();
+        inputTamanhoVetor.setText("10000");
     }
     
     @SuppressWarnings("unchecked")
@@ -28,33 +30,33 @@ public class TelaOrdenacao extends javax.swing.JFrame {
         lblImagemLogo = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pnlQuick = new javax.swing.JPanel();
+        lbResultadoQtdOrdanacoesQS = new javax.swing.JLabel();
         lbQtdOrdanacoesQS = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        lbTempoAtualQS = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lbResultadoTempoOrdenacaoQS = new javax.swing.JLabel();
+        lbTempoOrdenacaoQS = new javax.swing.JLabel();
         lbTempoMedioQS = new javax.swing.JLabel();
+        lbResultadoTempoMedioQS = new javax.swing.JLabel();
         btnOrdenarQS = new javax.swing.JButton();
         pnlSelection = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        lbTempoAtualSS = new javax.swing.JLabel();
+        lbTempoOrdenacaoSS = new javax.swing.JLabel();
+        lbResultadoTempoOrdenacaoSS = new javax.swing.JLabel();
+        lbResultadoTempoMedioSS = new javax.swing.JLabel();
         lbTempoMedioSS = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         lbQtdOrdanacoesSS = new javax.swing.JLabel();
+        lbResultadoQtdOrdanacoesSS = new javax.swing.JLabel();
         btnOrdenarSS = new javax.swing.JButton();
         pnlInsertion = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        lbTempoOrdenacaoIS = new javax.swing.JLabel();
+        lbResultadoTempoMedioIS = new javax.swing.JLabel();
         lbTempoMedioIS = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lbResultadoQtdOrdanacoesIS = new javax.swing.JLabel();
+        lbResultadoTempoOrdenacaoIS = new javax.swing.JLabel();
         lbQtdOrdanacoesIS = new javax.swing.JLabel();
-        lbTempoAtualIS = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         btnOrdenarIS = new javax.swing.JButton();
         pnlButtons = new javax.swing.JPanel();
         inputTamanhoVetor = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lbTamanhoVetor = new javax.swing.JLabel();
+        lbAviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ordenação de Dados");
@@ -108,34 +110,34 @@ public class TelaOrdenacao extends javax.swing.JFrame {
         });
         pnlQuick.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lbResultadoQtdOrdanacoesQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbResultadoQtdOrdanacoesQS.setText("0");
+        pnlQuick.add(lbResultadoQtdOrdanacoesQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 137, -1));
+
         lbQtdOrdanacoesQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lbQtdOrdanacoesQS.setText("0");
-        pnlQuick.add(lbQtdOrdanacoesQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 137, -1));
+        lbQtdOrdanacoesQS.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbQtdOrdanacoesQS.setText("Vezes ordenado:");
+        lbQtdOrdanacoesQS.setPreferredSize(new java.awt.Dimension(144, 24));
+        pnlQuick.add(lbQtdOrdanacoesQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 150, -1));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Vezes ordenado:");
-        jLabel1.setPreferredSize(new java.awt.Dimension(144, 24));
-        pnlQuick.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 150, -1));
+        lbResultadoTempoOrdenacaoQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbResultadoTempoOrdenacaoQS.setText("0 ms");
+        pnlQuick.add(lbResultadoTempoOrdenacaoQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 137, -1));
 
-        lbTempoAtualQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lbTempoAtualQS.setText("0 ms");
-        pnlQuick.add(lbTempoAtualQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 137, -1));
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel3.setText("  Tempo de ordenação atual:");
-        jLabel3.setToolTipText("");
-        pnlQuick.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 230, -1));
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Tempo Médio:");
-        jLabel5.setPreferredSize(new java.awt.Dimension(144, 24));
-        pnlQuick.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 120, -1));
+        lbTempoOrdenacaoQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbTempoOrdenacaoQS.setText("  Tempo de ordenação atual:");
+        lbTempoOrdenacaoQS.setToolTipText("");
+        pnlQuick.add(lbTempoOrdenacaoQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 230, -1));
 
         lbTempoMedioQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lbTempoMedioQS.setText("0 ms");
-        pnlQuick.add(lbTempoMedioQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 137, -1));
+        lbTempoMedioQS.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbTempoMedioQS.setText("Tempo Médio:");
+        lbTempoMedioQS.setPreferredSize(new java.awt.Dimension(144, 24));
+        pnlQuick.add(lbTempoMedioQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 120, -1));
+
+        lbResultadoTempoMedioQS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbResultadoTempoMedioQS.setText("0 ms");
+        pnlQuick.add(lbResultadoTempoMedioQS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 137, -1));
 
         btnOrdenarQS.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnOrdenarQS.setText("Ordenar");
@@ -153,33 +155,33 @@ public class TelaOrdenacao extends javax.swing.JFrame {
         pnlSelection.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlSelection.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel4.setText("  Tempo de ordenação atual:");
-        pnlSelection.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
+        lbTempoOrdenacaoSS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbTempoOrdenacaoSS.setText("  Tempo de ordenação atual:");
+        pnlSelection.add(lbTempoOrdenacaoSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
 
-        lbTempoAtualSS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lbTempoAtualSS.setText("0 ms");
-        pnlSelection.add(lbTempoAtualSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 137, -1));
+        lbResultadoTempoOrdenacaoSS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbResultadoTempoOrdenacaoSS.setText("0 ms");
+        pnlSelection.add(lbResultadoTempoOrdenacaoSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 137, -1));
+
+        lbResultadoTempoMedioSS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbResultadoTempoMedioSS.setText("0 ms");
+        pnlSelection.add(lbResultadoTempoMedioSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 137, -1));
 
         lbTempoMedioSS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lbTempoMedioSS.setText("0 ms");
-        pnlSelection.add(lbTempoMedioSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 137, -1));
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Tempo Médio:");
-        jLabel6.setPreferredSize(new java.awt.Dimension(144, 24));
-        pnlSelection.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 120, -1));
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Vezes ordenado:");
-        jLabel2.setPreferredSize(new java.awt.Dimension(144, 24));
-        pnlSelection.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 150, -1));
+        lbTempoMedioSS.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbTempoMedioSS.setText("Tempo Médio:");
+        lbTempoMedioSS.setPreferredSize(new java.awt.Dimension(144, 24));
+        pnlSelection.add(lbTempoMedioSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 120, -1));
 
         lbQtdOrdanacoesSS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lbQtdOrdanacoesSS.setText("0");
-        pnlSelection.add(lbQtdOrdanacoesSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 137, -1));
+        lbQtdOrdanacoesSS.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbQtdOrdanacoesSS.setText("Vezes ordenado:");
+        lbQtdOrdanacoesSS.setPreferredSize(new java.awt.Dimension(144, 24));
+        pnlSelection.add(lbQtdOrdanacoesSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 150, -1));
+
+        lbResultadoQtdOrdanacoesSS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbResultadoQtdOrdanacoesSS.setText("0");
+        pnlSelection.add(lbResultadoQtdOrdanacoesSS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 137, -1));
 
         btnOrdenarSS.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnOrdenarSS.setText("Ordenar");
@@ -197,34 +199,34 @@ public class TelaOrdenacao extends javax.swing.JFrame {
         pnlInsertion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlInsertion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel8.setText("  Tempo de ordenação atual:");
-        pnlInsertion.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
-        jLabel8.getAccessibleContext().setAccessibleDescription("");
+        lbTempoOrdenacaoIS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbTempoOrdenacaoIS.setText("  Tempo de ordenação atual:");
+        pnlInsertion.add(lbTempoOrdenacaoIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, -1));
+        lbTempoOrdenacaoIS.getAccessibleContext().setAccessibleDescription("");
+
+        lbResultadoTempoMedioIS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbResultadoTempoMedioIS.setText("0 ms");
+        pnlInsertion.add(lbResultadoTempoMedioIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 137, -1));
 
         lbTempoMedioIS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lbTempoMedioIS.setText("0 ms");
-        pnlInsertion.add(lbTempoMedioIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 137, -1));
+        lbTempoMedioIS.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbTempoMedioIS.setText("Tempo Médio:");
+        lbTempoMedioIS.setPreferredSize(new java.awt.Dimension(144, 24));
+        pnlInsertion.add(lbTempoMedioIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 120, -1));
 
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("Tempo Médio:");
-        jLabel9.setPreferredSize(new java.awt.Dimension(144, 24));
-        pnlInsertion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 120, -1));
+        lbResultadoQtdOrdanacoesIS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbResultadoQtdOrdanacoesIS.setText("0");
+        pnlInsertion.add(lbResultadoQtdOrdanacoesIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 137, -1));
+
+        lbResultadoTempoOrdenacaoIS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        lbResultadoTempoOrdenacaoIS.setText("0 ms");
+        pnlInsertion.add(lbResultadoTempoOrdenacaoIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 137, -1));
 
         lbQtdOrdanacoesIS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lbQtdOrdanacoesIS.setText("0");
-        pnlInsertion.add(lbQtdOrdanacoesIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 137, -1));
-
-        lbTempoAtualIS.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        lbTempoAtualIS.setText("0 ms");
-        pnlInsertion.add(lbTempoAtualIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 137, -1));
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Vezes ordenado:");
-        jLabel10.setPreferredSize(new java.awt.Dimension(144, 24));
-        pnlInsertion.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 150, -1));
+        lbQtdOrdanacoesIS.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbQtdOrdanacoesIS.setText("Vezes ordenado:");
+        lbQtdOrdanacoesIS.setPreferredSize(new java.awt.Dimension(144, 24));
+        pnlInsertion.add(lbQtdOrdanacoesIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 150, -1));
 
         btnOrdenarIS.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnOrdenarIS.setText("Ordenar");
@@ -255,6 +257,7 @@ public class TelaOrdenacao extends javax.swing.JFrame {
 
         inputTamanhoVetor.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         inputTamanhoVetor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        inputTamanhoVetor.setToolTipText("");
         inputTamanhoVetor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputTamanhoVetorActionPerformed(evt);
@@ -267,15 +270,15 @@ public class TelaOrdenacao extends javax.swing.JFrame {
         });
         getContentPane().add(inputTamanhoVetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 460, 108, -1));
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Tamanho do Vetor:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 464, -1, -1));
+        lbTamanhoVetor.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lbTamanhoVetor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTamanhoVetor.setText("Tamanho do Vetor:");
+        getContentPane().add(lbTamanhoVetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 464, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel11.setText("(Cuidado!! Se digitar um tamanho muito grande, poderá demorar para ordenar o vetor.)");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 616, 52));
+        lbAviso.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lbAviso.setForeground(new java.awt.Color(255, 153, 0));
+        lbAviso.setText("(Cuidado!! Se digitar um tamanho muito grande, poderá demorar para ordenar o vetor.)");
+        getContentPane().add(lbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 616, 52));
 
         getAccessibleContext().setAccessibleDescription("");
 
@@ -291,15 +294,16 @@ public class TelaOrdenacao extends javax.swing.JFrame {
         this.resultsSS = new Results();
     }
     
-    private int[] CriaVetor() {
+    private int[] CriarVetor() {
         int tamanhoVetor = Converte.textToValue(inputTamanhoVetor.getText());
         Vetor vetor = new Vetor(tamanhoVetor, 100);
+        
         return vetor.getElementos();
     }
     
     private void btnOrdenarQSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarQSActionPerformed
         try {
-            int[] elementos = this.CriaVetor(); 
+            int[] elementos = this.CriarVetor(); 
 
             long tempoInicialQuickSort = System.currentTimeMillis();
             QuickSort.quickSort(elementos, 0, elementos.length -1);
@@ -307,16 +311,16 @@ public class TelaOrdenacao extends javax.swing.JFrame {
 
             resultsQS.setTempoAtual(tempoQuickSort);
             this.AtualizarLbQS();
-        } catch(Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Tamanho do vetor incorreto", "Atenção", JOptionPane.WARNING_MESSAGE); 
             inputTamanhoVetor.requestFocus();
         }        
     }//GEN-LAST:event_btnOrdenarQSActionPerformed
 
     private void AtualizarLbQS() {
-        this.lbTempoAtualQS.setText(resultsQS.getTempoAtual() + " ms");
-        this.lbTempoMedioQS.setText(resultsQS.getTempoMedio() + " ms");
-        this.lbQtdOrdanacoesQS.setText(resultsQS.getQtdOrdenacoes() + "");
+        this.lbResultadoTempoOrdenacaoQS.setText(resultsQS.getTempoAtual() + " ms");
+        this.lbResultadoTempoMedioQS.setText(resultsQS.getTempoMedio() + " ms");
+        this.lbResultadoQtdOrdanacoesQS.setText(resultsQS.getQtdOrdenacoes() + "");
     }
     
     private void inputTamanhoVetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTamanhoVetorActionPerformed
@@ -324,7 +328,7 @@ public class TelaOrdenacao extends javax.swing.JFrame {
 
     private void btnOrdenarSSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarSSActionPerformed
         try {
-            int[] elementos = this.CriaVetor();
+            int[] elementos = this.CriarVetor();
         
             long tempoInicialSS = System.currentTimeMillis();
             SelectionSort.selectionSort(elementos);
@@ -332,24 +336,24 @@ public class TelaOrdenacao extends javax.swing.JFrame {
 
             resultsSS.setTempoAtual(tempoSS);        
             this.AtualizarLbSS();
-        } catch(Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Tamanho do vetor incorreto", "Atenção", JOptionPane.WARNING_MESSAGE); 
             inputTamanhoVetor.requestFocus();
         }  
     }//GEN-LAST:event_btnOrdenarSSActionPerformed
 
     private void AtualizarLbSS() {
-        this.lbTempoAtualSS.setText(resultsSS.getTempoAtual() + " ms");
-        this.lbTempoMedioSS.setText(resultsSS.getTempoMedio() + " ms");
-        this.lbQtdOrdanacoesSS.setText(resultsSS.getQtdOrdenacoes() + "");
+        this.lbResultadoTempoOrdenacaoSS.setText(resultsSS.getTempoAtual() + " ms");
+        this.lbResultadoTempoMedioSS.setText(resultsSS.getTempoMedio() + " ms");
+        this.lbResultadoQtdOrdanacoesSS.setText(resultsSS.getQtdOrdenacoes() + "");
     }    
     
     private void btnOrdenarISActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarISActionPerformed
-        try{    
-            int[] elementos = this.CriaVetor(); 
+        try {    
+            int[] vetor = this.CriarVetor(); 
 
             long tempoInicialIS = System.currentTimeMillis();
-            InsertionSort.insertionSort(elementos);
+            InsertionSort.insertionSort(vetor);
             long tempoIS = System.currentTimeMillis() - tempoInicialIS;
 
             resultsIS.setTempoAtual(tempoIS);        
@@ -368,9 +372,9 @@ public class TelaOrdenacao extends javax.swing.JFrame {
     }//GEN-LAST:event_inputTamanhoVetorKeyPressed
 
     private void AtualizarLbIS() {
-        this.lbTempoAtualIS.setText(resultsIS.getTempoAtual() + " ms");
-        this.lbTempoMedioIS.setText(resultsIS.getTempoMedio() + " ms");
-        this.lbQtdOrdanacoesIS.setText(resultsIS.getQtdOrdenacoes() + "");
+        this.lbResultadoTempoOrdenacaoIS.setText(resultsIS.getTempoAtual() + " ms");
+        this.lbResultadoTempoMedioIS.setText(resultsIS.getTempoMedio() + " ms");
+        this.lbResultadoQtdOrdanacoesIS.setText(resultsIS.getQtdOrdenacoes() + "");
     } 
     
     public static void main(String args[]) {
@@ -409,27 +413,27 @@ public class TelaOrdenacao extends javax.swing.JFrame {
     private javax.swing.JButton btnOrdenarQS;
     private javax.swing.JButton btnOrdenarSS;
     private javax.swing.JTextField inputTamanhoVetor;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lbAviso;
     private javax.swing.JLabel lbQtdOrdanacoesIS;
     private javax.swing.JLabel lbQtdOrdanacoesQS;
     private javax.swing.JLabel lbQtdOrdanacoesSS;
-    private javax.swing.JLabel lbTempoAtualIS;
-    private javax.swing.JLabel lbTempoAtualQS;
-    private javax.swing.JLabel lbTempoAtualSS;
+    private javax.swing.JLabel lbResultadoQtdOrdanacoesIS;
+    private javax.swing.JLabel lbResultadoQtdOrdanacoesQS;
+    private javax.swing.JLabel lbResultadoQtdOrdanacoesSS;
+    private javax.swing.JLabel lbResultadoTempoMedioIS;
+    private javax.swing.JLabel lbResultadoTempoMedioQS;
+    private javax.swing.JLabel lbResultadoTempoMedioSS;
+    private javax.swing.JLabel lbResultadoTempoOrdenacaoIS;
+    private javax.swing.JLabel lbResultadoTempoOrdenacaoQS;
+    private javax.swing.JLabel lbResultadoTempoOrdenacaoSS;
+    private javax.swing.JLabel lbTamanhoVetor;
     private javax.swing.JLabel lbTempoMedioIS;
     private javax.swing.JLabel lbTempoMedioQS;
     private javax.swing.JLabel lbTempoMedioSS;
+    private javax.swing.JLabel lbTempoOrdenacaoIS;
+    private javax.swing.JLabel lbTempoOrdenacaoQS;
+    private javax.swing.JLabel lbTempoOrdenacaoSS;
     private javax.swing.JLabel lblImagemLogo;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JPanel pnLogo;
