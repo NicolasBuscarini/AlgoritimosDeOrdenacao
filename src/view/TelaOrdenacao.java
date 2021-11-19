@@ -18,7 +18,7 @@ public class TelaOrdenacao extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         inputTamanhoVetor.setDocument(new LimitaJTextField());  // Limita apenas numeros e limite de 7 caracteres.
         this.ResetResults();
-        inputTamanhoVetor.setText("10000");
+        inputTamanhoVetor.setText("10000");   
     }
     
     @SuppressWarnings("unchecked")
@@ -301,6 +301,19 @@ public class TelaOrdenacao extends javax.swing.JFrame {
         return vetor.getElementos();
     }
     
+    //PRINTAR VETOR NO CONSOLE
+    private void printElementos(int elemento[]) {
+        System.out.println("\n\n\n Vetor Ordenado \n ------------------");
+            System.out.print("{ ");
+            for(int i=0; i < elemento.length; i++ ) {
+                System.out.print(elemento[i] + ", ");
+                if(i != 0)
+                    if ((i % 40) == 0)
+                        System.out.print("\n");
+            }
+            System.out.print("} \n\n");
+    }
+    
     private void btnOrdenarQSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarQSActionPerformed
         try {
             int[] elementos = this.CriarVetor(); 
@@ -311,6 +324,7 @@ public class TelaOrdenacao extends javax.swing.JFrame {
 
             resultsQS.setTempoAtual(tempoQuickSort);
             this.AtualizarLbQS();
+            this.printElementos(elementos);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Tamanho do vetor incorreto", "Atenção", JOptionPane.WARNING_MESSAGE); 
             inputTamanhoVetor.requestFocus();
@@ -322,8 +336,9 @@ public class TelaOrdenacao extends javax.swing.JFrame {
         this.lbResultadoTempoMedioQS.setText(resultsQS.getTempoMedio() + " ms");
         this.lbResultadoQtdOrdanacoesQS.setText(resultsQS.getQtdOrdenacoes() + "");
     }
-    
+   
     private void inputTamanhoVetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTamanhoVetorActionPerformed
+   
     }//GEN-LAST:event_inputTamanhoVetorActionPerformed
 
     private void btnOrdenarSSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarSSActionPerformed
@@ -336,6 +351,7 @@ public class TelaOrdenacao extends javax.swing.JFrame {
 
             resultsSS.setTempoAtual(tempoSS);        
             this.AtualizarLbSS();
+            this.printElementos(elementos);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Tamanho do vetor incorreto", "Atenção", JOptionPane.WARNING_MESSAGE); 
             inputTamanhoVetor.requestFocus();
@@ -358,6 +374,8 @@ public class TelaOrdenacao extends javax.swing.JFrame {
 
             resultsIS.setTempoAtual(tempoIS);        
             this.AtualizarLbIS();
+            this.printElementos(vetor);
+            
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, "Tamanho do vetor incorreto", "Atenção", JOptionPane.WARNING_MESSAGE); 
             inputTamanhoVetor.requestFocus();
