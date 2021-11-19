@@ -11,8 +11,8 @@ public class Vetor {
         this.setTamanho(tamanho);
         this.setValorMax(valorMax);
         this.elementos = new int[tamanho];
-        
-        this.gerar();
+        this.gerarElementos();
+        this.printElementos();
     }
 
     public int getValorMax() {
@@ -36,13 +36,15 @@ public class Vetor {
     }
     
     public void printElementos() {
-        System.out.print('{');
+        System.out.println("\n Vetor NÃO Ordenado \n ------------------");
+        System.out.print("{ ");
         for (int i = 0; i < tamanho; i++) {
-            System.out.print(this.elementos[i]);
-            if (i < tamanho - 1)
-                System.out.print(", ");
+            System.out.print(this.elementos[i] + ", ");
+            if(i != 0)
+                if ((i % 30) == 0)
+                    System.out.print("\n");
         }
-        System.out.print('}');
+        System.out.print("} \n");
     }
     
     private void gerar() {
