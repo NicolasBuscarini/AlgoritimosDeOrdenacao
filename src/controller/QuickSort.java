@@ -2,31 +2,31 @@ package controller;
 
 public class QuickSort {
     
-    public static void quickSort(int[] v, int esquerda, int direita) {
+    public static void quickSort(int[] vetor, int esquerda, int direita) {
         int esq = esquerda;
         int dir = direita;
-        int pivo = v[(esq + dir) / 2];
+        int pivo = vetor[(esq + dir) / 2];
         int troca;
 
         while (esq <= dir) {
-            while (v[esq] < pivo) {
+            while (vetor[esq] < pivo) 
                 esq = esq + 1;
-            }
-            while (v[dir] > pivo) {
+            
+            while (vetor[dir] > pivo) 
                 dir = dir - 1;
-            }
+            
             if (esq <= dir) {
-                troca = v[esq];
-                v[esq] = v[dir];
-                v[dir] = troca;
-                esq = esq + 1;
-                dir = dir - 1;
+                troca = vetor[esq];
+                vetor[esq] = vetor[dir];
+                vetor[dir] = troca;
+                esq += 1;
+                dir -= 1;
             }
         }
         if (dir > esquerda)
-                quickSort(v, esquerda, dir);
+            quickSort(vetor, esquerda, dir);
 
         if (esq < direita)
-                quickSort(v, esq, direita);
+            quickSort(vetor, esq, direita);
     }
 }

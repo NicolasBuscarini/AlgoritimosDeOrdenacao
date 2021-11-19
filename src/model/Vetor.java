@@ -3,6 +3,7 @@ package model;
 import java.util.Random;
 
 public class Vetor {
+    
     private int tamanho;
     private int valorMax;
     private final int[] elementos;
@@ -47,10 +48,9 @@ public class Vetor {
         System.out.print("} \n");
     }
     
-    private void gerar() {
+    private void gerarElementos() {
         Random radom = new Random();
-        for (int i = 0; i < tamanho; i++) {
+        for (int i = 0; i < tamanho; i++) 
             this.elementos[i] += radom.nextInt(this.valorMax);
-        }
     }
 }
